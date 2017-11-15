@@ -1,0 +1,27 @@
+<% include ../partials/headerAdmin %>
+<div class="col-12 border rounded border-secondary m-2">
+    <div class="m-2">
+        <div class="caption-full">
+          <h3 class="text-center">
+            <%= classes.kelas %>
+          </h3>
+          <hr style="
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));">
+          <p>Nama: <%= classes.nama %></p>
+          <p>Nim: <%= classes.nim %></p>
+          <p>Alasan: <%= classes.alasan %></p>
+          <p>Tanggal: <%= moment(classes.date).format("MMM Do YY") %></p>
+          <div>
+               status: <%= classes.disetujui?"Approved":"Not Approved" %>
+          </div>
+          <p><em>Submitted when: <%= moment(classes.createdAt).fromNow() %></em></p>
+              <a class="btn btn-xs btn-warning" href="/admin/class/<%=classes._id%>/edit">Edit Persetujuan</a>
+              <form class="delete-form" style="display:inline" action="/admin/class/<%= classes._id %>?_method=DELETE" method="POST">
+                  <button class="btn btn-xs btn-danger">Delete</button>
+              </form>
+        </div>
+    </div>
+</div>
+<% include ../partials/footer %>
